@@ -18,9 +18,12 @@
 
 .app-wrapper {
   background-color: #292f38;
+  display: flex;
+  flex-direction: column;
   width: 25%;
   min-width: 450px;
   height: 400px;
+  min-height: 500px;
   padding: 30px;
   box-sizing: border-box;
   border-radius: 5px;
