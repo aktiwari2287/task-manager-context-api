@@ -1,14 +1,29 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import {TaskListContext} from '../context/TaskListContext'
 const TaskForm = () => {
     const {tasks} = useContext(TaskListContext);
-    const {addTask, clearTasks} = useContext(TaskListContext);
+    const {addTask, clearTasks, editTask, editItem} = useContext(TaskListContext);
     const [title, setTitle] = useState("");
     const handleSubmit = (event) => {
         event.preventDefault();
-        addTask(title);
-        setTitle('');
-    }
+        if(!editItem) {
+            addTask(title);
+            setTitle('');
+        }
+       else {
+           editTask(title, editItem.id);
+       }
+    };
+
+    useEffect(() => {
+        if (editItem) {
+          setTitle(editItem.title)
+          console.log(editItem)
+        } else {
+          setTitle('')
+        }
+      }, [editItem]);
+
     const handleChange = (event) => {
         setTitle(event.target.value);
     }
