@@ -4,6 +4,7 @@ const TaskForm = () => {
     const {tasks} = useContext(TaskListContext);
     const {addTask, clearTasks, editTask, editItem} = useContext(TaskListContext);
     const [title, setTitle] = useState("");
+    let addOrEdit = "Add";
     const handleSubmit = (event) => {
         event.preventDefault();
         if(!editItem) {
@@ -18,7 +19,7 @@ const TaskForm = () => {
     useEffect(() => {
         if (editItem) {
           setTitle(editItem.title)
-          console.log(editItem)
+          console.log(editItem);
         } else {
           setTitle('')
         }
@@ -32,7 +33,7 @@ const TaskForm = () => {
             <form onSubmit={handleSubmit} className="form">
                 <input type="text" value={title} onChange={handleChange} className="task-input" placeholder="Add Task..." required/>
                 <div className="buttons">
-                    <button type="submit" className="btn add-task-btn">Add Task</button>
+                    <button type="submit" className="btn add-task-btn"> {editItem ? 'Edit Task' : 'Add Task'}</button>
                     <button type="button" className="btn clear-btn" onClick={()=> clearTasks()}>Clear</button>
                 </div>
             </form>
