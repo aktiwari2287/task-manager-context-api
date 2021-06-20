@@ -18,7 +18,15 @@ const TaskListContextProvider = (props) => {
         setTasks(tasks.filter(task => task.id!==id));
     }
 
-    return <TaskListContext.Provider value={{tasks, addTask, deleteTask }}> 
+    const editTask = (title, id) => {
+        const index = tasks.findIndex((task) => task.id === id);
+        tasks[index].title = title;
+       // setTasks(tasks);
+    }
+    const clearTasks = () => {
+        setTasks([]);
+    }
+    return <TaskListContext.Provider value={{tasks, addTask, deleteTask, editTask, clearTasks }}> 
                 {props.children}
             </TaskListContext.Provider>
 }

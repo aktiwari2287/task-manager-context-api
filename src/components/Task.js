@@ -3,9 +3,14 @@ import { TaskListContext } from '../context/TaskListContext';
 
 const Task = ({ task }) => {
 
-    const {deleteTask} = useContext(TaskListContext);
+    const {deleteTask, editTask} = useContext(TaskListContext);
+    
     const handleDelete = (event) => {
         deleteTask(task.id);
+    }
+
+    const handleEditTask = (event) => {
+       
     }
 
     return (
@@ -16,7 +21,7 @@ const Task = ({ task }) => {
                     <i className="fas fa-trash-alt" onClick={handleDelete}></i>
                 </button>
                 <button className="btn-edit task-btn">
-                    <i className="fas fa-pen"></i>
+                    <i className="fas fa-pen" onClick={handleEditTask}></i>
                 </button>
             </div>
         </li>
