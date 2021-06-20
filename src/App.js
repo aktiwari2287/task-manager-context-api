@@ -1,9 +1,17 @@
-import './App.css';
+import "./App.css";
+import TaskList from "./components/TaskList";
+import TaskListContextProvider from "./context/TaskListContext";
 function App() {
   return (
-    <div className="App">
-      <h1>Anand.</h1>
-    </div>
+    <TaskListContextProvider>
+      <div className="container">
+        <div className="app-wrapper">
+          <div className="main">
+            <TaskList />
+          </div>
+        </div>
+      </div>
+    </TaskListContextProvider>
   );
 }
 
